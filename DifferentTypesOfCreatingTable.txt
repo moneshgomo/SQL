@@ -1,0 +1,144 @@
+Different Types of Creating Table 
+
+traditional way : CREATE TABLE tableName (sno int , name varchar(10));
+
+another way :  CTAS => CREATE TABLE AS SELECT 
+			- Creating a table by usinbg the existing table 
+			example :
+				CREATE TABLE employee (
+				  id INT,
+				  firstName VARCHAR(10),
+				  secondName VARCHAR(10),
+				  salary INT
+				);
+				
+			INSERT INTO employee (id, firstName, secondName, salary) VALUES
+			(1, 'John', 'Doe', 50000),
+			(2, 'Alice', 'Smith', 60000),
+			(3, 'Bob', 'Brown', 45000),
+			(4, 'Eve', 'Johnson', 70000),
+			(5, 'Tom', 'White', 55000);
+			
+-------+-----------+------------+--------+
+| id   | firstName | secondName | salary |
++------+-----------+------------+--------+
+|    1 | John      | Doe        |  50000 |
+|    2 | Alice     | Smith      |  60000 |
+|    3 | Bob       | Brown      |  45000 |
+|    4 | Eve       | Johnson    |  70000 |
+|    5 | Tom       | White      |  55000 |
++------+-----------+------------+--------+
+
+- CREATE TABLE high_paid AS SELECT id,firstName,secondName,salary FROM employee where salary > 50000;
+
+- mysql> select * from high_paid;
++------+-----------+------------+--------+
+| id   | firstName | secondName | salary |
++------+-----------+------------+--------+
+|    2 | Alice     | Smith      |  60000 |
+|    4 | Eve       | Johnson    |  70000 |
+|    5 | Tom       | White      |  55000 |
++------+-----------+------------+--------+
+			
+== TEMPORARY TABLE ==
+	- Temporary tables exist only for the session.
+	- Once you exit MySQL or drop the table, it's gone.
+
+- CREATE TEMPORARY TABLE temp_table_high_paid( employee_id int , salary DECIMAL(10,2)); 
+- INSERT INTO temp_table_high_paid (employee_id, salary) VALUES
+	(2, 65000.50),
+	(4, 72000.75);
+	
+- mysql> SELECT * FROM temp_table_high_paid;
+	+-------------+----------+
+	| employee_id | salary   |
+	+-------------+----------+
+	|           2 | 65000.50 |
+	|           4 | 72000.75 |
+	+-------------+----------+
+	2 rows in set (0.00 sec)
+	
+---
+
+we can also insert data into a table like CTAS but the table column match with the selected columns in that table with where conditions 
+
+CTE => COMMONLY TABLE EXPRESSION { if we use WITH to create a table ( temporary table ) but dont create 
+		
+		
+----
+
+ALTER { table }
+
+- ALTER TABLE test ADD COLUMN email varchar(10);
+- 
+mysql> select * from test;
++------+------+-------+
+| sno  | name | email |
++------+------+-------+
+|    1 | Gomo | NULL  |
++------+------+-------+
+
+- UPDATE test set email = 'gomo.com' where sno = 1;
+- mysql> select * from test;
++------+------+----------+
+| sno  | name | email    |
++------+------+----------+
+|    1 | Gomo | gomo.com |
++------+------+----------+
+
+- ALTER TABLE test rename  to test_db; { to rename the table }
+- ALTER TABLE test_db drop column email;
+- mysql> select * from test_db;
++------+------+
+| sno  | name |
++------+------+
+|    1 | Gomo |
++------+------+
+
+
+timing :01:03:45
+
+
+---
+
+where 
+
+
+create schema uber;
+
+create table uber.rides (
+	ride_id INT  ,
+	driver_id INT ,
+	rideer_id INT ,
+	pickup_location VARCHAR (100),
+	drop_location VARCHAR (100),
+	ride_date DATETIME,
+	fare DECIMAL (10,2)
+);
+
+
+INSERT INTO uber.rides (ride_id, driver_id, rideer_id, pickup_location, drop_location, ride_date, fare) VALUES
+(1, 101, 201, 'T Nagar', 'Marina Beach', '2025-08-01 10:30:00', 120.50),
+(2, 102, 202, 'Velachery', 'Guindy', '2025-08-02 15:45:00', 90.00),
+(3, 103, 203, 'Anna Nagar', 'Chennai Central', '2025-08-03 09:15:00', 110.75),
+(4, 104, 204, 'Adyar', 'Guindy Industrial Estate', '2025-08-04 12:00:00', 130.00),
+(5, 105, 205, 'Kodambakkam', 'Vadapalani', '2025-08-05 18:30:00', 80.20);
+
+
+ select * from uber.rides where fare > 100;
+		{ OR }
+ select * from uber.rides where fare > '100';
+
+ select * from uber.rides where fare > 100  order by fare  desc ;
+ select * from uber.rides where fare > 100  order by fare  asc ;
+
+
+SELECT * FROM uber.rides WHERE fare > 100 AND drop_location = 'Chennai Central' ORDER BY fare DESC;
+
+
+
+
+
+
+
+
