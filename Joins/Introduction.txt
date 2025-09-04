@@ -1,0 +1,4 @@
+why joins , all data are not  stored in a single table , but why to improve the performances 
+
+prefer alise fir the table name 
+
