@@ -1,0 +1,29 @@
+Introduction
+Installation
+Basics of SQL commands
+Types of create tables
+where
+SQL Constraints
+Minimal Key
+Super key,candidate key ,natural key
+aggregates funtions
+alais , not in , in 
+alter tables
+commit , rollbacks
+revoke , grant
+case ciew
+String, null handling
+sub quries
+views
+SQL Joins
+windows function
+Union, Union all
+Index
+Partition
+date time 
+regex 
+JDBC using python
+normalization
+Slowly changing  dimension
+ACID ( rule )
+DDL,DML,TCL,SCL
