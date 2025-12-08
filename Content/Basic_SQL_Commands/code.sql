@@ -32,3 +32,14 @@ truncate table test;
 
 -- delete table
 drop table test;
+
+
+-- ALTER table ( define or modify the table structure )
+
+alter table test add age int;
+alter table test drop column age;
+alter table test add column Email varchar(100);
+
+-- rename table
+alter table test rename to emp_details;
+
