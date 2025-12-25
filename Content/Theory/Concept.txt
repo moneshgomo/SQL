@@ -1,0 +1,19 @@
+1. Surrogate key 
+    - Unique for each version of the customer record 
+    - example : customer_key with AUTO INCREMENT
+    - Artificial Unique key 
+
+2. Natural key 
+    - Unique identifier for the customer ( columns are always Unique)
+    - example : Aadhaar card number 
+    - It can be a PRIMARY KEY ( must in all tables )
+
+---
+
+[ 02: 06 : 00 ]
+
+Candidate key ( all )   
+Super key
+Primary key ( only one column) All PRIMARY KEY are Candidate keys 
+Composite Key  ( more than one column ) All Composite & PRIMARY keys are Candidate keys
+
